@@ -1,8 +1,8 @@
 class CreateAnswersTable < ActiveRecord::Migration
   def change
-    create_table :questions do |t|
+    create_table :answers do |t|
       t.text :question
-      t.references :survey
+      t.references :question
 
       t.timestamps null: false
     end

@@ -9,3 +9,8 @@ end
 get '/surveys/show' do
   erb :'surveys/show'
 end
+
+get 'surveys/:id' do
+
+  erb :'surveys/show'
+end

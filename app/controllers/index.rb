@@ -1,24 +1,13 @@
 get '/' do
-  @sign_text = params[:sign_text]
-  # Look in app/views/index.erb
-  erb :index
+  redirect '/users'
 end
 
-get '/users/new' do
-  erb :'users/new'
-end
+  #   if logged_in?
+  #   @user=User.find(session[:id])
+  #   erb :'views/show'
+  # else
+  #   redirect '/views/index'
+  # end
 
-get '/users/show' do
-  erb :'users/show'
-end
 
-get '/surveys/results' do
-  erb :'surveys/results'
-end
-get '/surveys/new' do
-  erb :'surveys/new'
-end
-get '/surveys/show' do
-  erb :'surveys/show'
-end
 

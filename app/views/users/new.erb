@@ -1,5 +1,4 @@
-'Create your Survey Gorilla Account!'
-<input type="submit" value="Register!">
+
 <!-- Username
 name
 email
@@ -7,4 +6,15 @@ password
 
 <button sign up button
   <a href="/users/show">Sign Up!</a> (this should send you to the users new profile page.) -->
-<a href="/">Home</a>
+<header><h2>Register New Account</h2></header>
+<form action="/users" method="POST">
+<label for="user[name]">Name:</label>
+<input type="text" name="user[name]">
+<label for="user[username]">Username:</label>
+<input type="username" name="user[username]">
+<label for="user[email]">Email:</label>
+<input type="email" name="user[email]">
+<label for="user[password]">Password:</label>
+<input type="password" name="user[password]">
+<input type="submit" value="Submit!">
+</form>

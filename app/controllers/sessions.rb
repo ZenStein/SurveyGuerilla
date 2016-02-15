@@ -3,12 +3,12 @@ get '/session-viewer' do
   session.inspect
 end
 
-get "/sessions/login" do
+get "/sessions/new" do
   if logged_in?
     @user = User.find(session[:id])
     redirect "/users/#{@user.id}"
   else
-    erb :"index"
+    erb :"/sessions/new"
   end
 end
 

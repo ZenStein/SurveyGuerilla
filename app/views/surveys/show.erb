@@ -1,4 +1,4 @@
-'this shows a individual survey that you can take'
+<header><h2>Survey viewer: <%=@survey.name%></h2></header>
 <!--
 Survey title
 each question
@@ -6,4 +6,20 @@ each question
   answer 2
 submit button
   (<a href="users/:user_id/show">Submit Survey</a> this should take them back to their profile page  after a pop-up that tells them their survey has been completed-->
-<a href="/">Home</a>
+
+<form method="POST" action="/surveys/<%=@survey.id%>">
+<div class="row uniform 50%">
+<% @survey.questions.each do |question| %>
+	<h3><%=question.question%></h3>
+	<%question.answers.each do |answer|%>
+										<div class="4u 12u$(xsmall)">
+										<input type="radio" name="answers[]" value="<%=answer.id%>">
+										<label for="priority-normal"><%=answer.answer%></label>
+									</div>
+	<%end%>
+	</div>
+
+	<%end%>
+	<input type="submit" value="Submit">
+	</div>
+	</form>

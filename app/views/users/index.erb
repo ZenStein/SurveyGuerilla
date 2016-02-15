@@ -1,0 +1,6 @@
+<header><h2>Browse Users</h2></header>
+<!-- Each users name should be listed that links to their profile page. -->
+<ul class="alt">
+<% @users.each do |user| %>
+<li><a href="/users/<%=user.id%>"><%= user.username %></a></li>
+<% end%>

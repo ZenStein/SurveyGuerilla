@@ -1,5 +1,6 @@
 get '/users' do
-  erb :'index'
+  @users = User.all
+  erb :"users/index"
 end
 
 get '/users/new' do
@@ -7,7 +8,7 @@ get '/users/new' do
 end
 
 post '/users' do
-  @user=User.new(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
+  @user = User.new(params[:user])
   if @user.save
     login(@user)
     redirect "users/#{@user.id}"
@@ -19,8 +20,9 @@ end
 
 get '/users/:id' do
   if logged_in?
-    @current_user=User.find(session[:id])
-    @user =User.find(params[:id])
+    @current_user= current_user
+    p @completed = CompletedSurvey.where(user: @current_user)
+    @completed = CompletedSurvey.where(user: @current_user)
   erb :'users/show'
   else
     @errors = "Please login to your account"
@@ -28,11 +30,6 @@ get '/users/:id' do
   end
 end
 
-get 'users/all' do
-  @user=User.find(session[:id])
-  @users=User.all
-  erb :"users/all_users"
-end
 
 delete 'users/:id' do
   @user_account=User.find(params[:id])

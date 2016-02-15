@@ -1,4 +1,4 @@
-'this is the page that creates a new survey'
+<header><h2>Create a new survey</h2></header>
 
 <!-- Title
 Question
@@ -6,6 +6,37 @@ Choice
   add choice button
 add question button
 save survey
-  This should redirect back to the profile page after a pop up says that it has been successfully created -->
+This should redirect back to the profile page after a pop up says that it has been successfully created -->
 
-<a href="/">Home</a>
+<div class="input_fields_wrap">
+	<form method="POST" action="/surveys">
+		<div>
+			<label for="title">Survey Title:</label>
+			<input type="text" name="title">
+		</div>
+		<div class=question_fields_wrap>
+			<div class="question1">
+				<label for="question">Question:</label>
+				<input type="text" name="questions[]">
+				<div class="answers_wrap">
+					<div>
+						<label for="answer">Choice:</label>
+						<input type="text" name="answer[question1][]">
+						<label for="answer">Choice:</label>
+						<input type="text" name="answer[question1][]">
+						<label for="answer">Choice:</label>
+						<input type="text" name="answer[question1][]">
+					</div>
+				</div>
+				<div>
+					<button class="add_answer_button">Add More Choices</button>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<button class="add_question_button">Add More Questions</button>
+		</div>
+		<input type="submit" value="Save survey">
+	</form>
+</div>

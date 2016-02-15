@@ -1,6 +1,10 @@
-"This should display a list of all surveys"
+<h1>Browse Surveys</h1>
 
 <!-- Each survey title should be listed that links to their profile page.
 
 We should consider adding a private option if a user does not want everyone to see their survey
  -->
+<ul>
+<% @surveys.each do |survey| %>
+<li><a href="/surveys/<%=survey.id%>"><%= survey.name %></a></li>
+<% end%>

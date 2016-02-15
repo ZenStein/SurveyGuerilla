@@ -11,7 +11,7 @@
     application.css is where you put your styles
   -->
   <link rel="stylesheet" href="/css/application.css">
-
+ <link rel="stylesheet" href="/css/spatial.css">
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
@@ -19,6 +19,38 @@
 </head>
 
 <body>
+
+      <header id="header">
+        <h1><strong><a href="/">SURVEY</strong>GORILLA</a></h1>
+        <nav id="nav">
+          <ul><%if !(logged_in?)%>
+            <li><a href="/">Home</a></li>
+            <li><a href="/users/new">Register</a></li>
+            <%else%>
+            <li><a href="/">Dashboard</a></li>
+            <%end%>
+            
+            <li><a href="/surveys">Browse Surveys</a></li>
+            <li><a href="/surveys">Browse Users</a></li>
+            
+
+            <li><%if logged_in?%>
+<form method="post" action="/sessions">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Logout">
+</form>
+<%else%>
+<form method="get" action="/sessions/new">
+<input type="submit" value="Login">
+</form>
+<%end%></li>
+          </ul>
+        </nav>
+      </header>
+<section id="main" class="wrapper">
+        <div class="container"><br><br>
   <%= yield %>
+  </div>
+  </section>
 </body>
 </html>

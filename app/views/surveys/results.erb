@@ -5,3 +5,20 @@
   answers.count
 Delete button if they are the survey creator -->
 <a href="/">Home</a>
+
+<%=@survey.name%>
+<form method="POST" action="/surveys/<%=@survey.id%>">
+<% @survey.questions.each do |question| %>
+	<div><%=question.question%>:
+	<%question.answers.each do |answer|%>
+	<%=answer.answer%>
+	<%CompletedSurvey.where(survey: @survey, user: @user).map do |result| %>
+		<%if result.answer == answer%>
+			<%result.answer%>
+		<%end%>
+	<%end.compact.count%>
+	<% end %>
+	</div>
+	<%end%>
+	<input type="submit" value="Submit">
+	</form>

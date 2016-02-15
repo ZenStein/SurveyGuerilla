@@ -16,13 +16,13 @@ $(add_question_button).click(function(e){
 	e.preventDefault();
 	if(x < max_fields){
 		x++;
-		$(questions_wrapper).append('<div class="question'+ x +'"><label for="question">Question:</label><input type="text" name="questions[]" placeholder="Enter your question"/><a href="#" class="remove_question_field button alt small">Remove Question</a><div class="answers_wrap"><div><label for="answer">Choice:</label><input type="text" name="answer[question'+x+'][]" placeholder="Enter an answer"/></div><div><label for="answer">Choice:</label><input type="text" name="answer[question'+x+'][]" placeholder="Enter an answer"/></div><div><label for="answer">Choice:</label><input type="text" name="answer[question'+x+'][]" placeholder="Enter an answer"/></div><div><button class="add_answer_button button small">Add More Choices</button></div></div>');
+		$(questions_wrapper).append('<div class="question'+ x +'"><label for="question">Question:</label><input type="text" name="questions[]" placeholder="Enter your question"/><a href="#" class="remove_question_field button alt small">Remove Question</a><div class="answers_wrap"><div><label for="answer">Choice:</label><input type="text" name="answer[question'+x+'][]" placeholder="Enter an answer"/></div><div><label for="answer">Choice:</label><input type="text" name="answer[question'+x+'][]" placeholder="Enter an answer"/></div><div><label for="answer">Choice:</label><input type="text" name="answer[question'+x+'][]" placeholder="Enter an answer"/></div></div><div><button class="add_answer_button button small">Add More Choices</button></div>');
 		add_answer_button = $(".add_answer_button");
 		console.log(add_answer_button);
 	}
 });
 
-$(add_answer_button).on("click",function(e){
+$(".input_fields_wrap").on("click", ".add_answer_button",function(e){
 	console.log("ADD ANSWER BUTTON PUSHED!")	
 	
 	e.preventDefault();

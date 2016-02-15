@@ -3,17 +3,27 @@ get '/surveys' do
   erb :'surveys/all_surveys'
 end
 
-get 'surveys/:id' do
-
+get '/surveys/:id' do
+  @survey= Survey.find(params[:id])
   erb :'surveys/show'
 end
 
-get '/surveys/results' do
-  erb :'surveys/results'
+get '/surveys/:id/results' do
+  if logged_in?
+    @user =User.find(session[:id])
+    redirect "/surveys/results/#{@survey.id}"
+  else
+    redirect '/'
+  end
 end
 
 get '/surveys/new' do
+  if logged_in?
+    @user=User.find(session[:id])
   erb :'surveys/new'
+  else
+    redirect '/'
+  end
 end
 
 post '/surveys' do
@@ -21,11 +31,10 @@ post '/surveys' do
   @question= Question.new(question: params[:question])
   @answer= Answer.new(answer: params[:answer])
   if @survey.save
-    redirect "/"
-  redirect "/surveys/#{survey.id}"
+    redirect "/surveys/#{survey.id}"
+  else
+    erb :'surveys/new'
+  end
 end
 
-post '/surveys/:id' do
-  redirect '/surveys/show'
-end
 

@@ -32,6 +32,7 @@ get 'users/all' do
   @user=User.find(session[:id])
   @users=User.all
   erb :"users/all_users"
+end
 
 delete 'users/:id' do
   @user_account=User.find(params[:id])

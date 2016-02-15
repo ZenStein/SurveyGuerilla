@@ -1,13 +1,13 @@
 get '/' do
-  redirect '/users'
+    if logged_in?
+    @user=User.find(session[:id])
+    erb :'users/show'
+  else
+    redirect '/users'
+  end
 end
 
-  #   if logged_in?
-  #   @user=User.find(session[:id])
-  #   erb :'views/show'
-  # else
-  #   redirect '/views/index'
-  # end
+
 
 
 

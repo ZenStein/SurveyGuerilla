@@ -8,7 +8,7 @@ get "/sessions/login" do
     @user = User.find(session[:id])
     redirect "/users/#{@user.id}"
   else
-    erb :"/sessions/login"
+    erb :"index"
   end
 end
 
@@ -17,7 +17,7 @@ get "/sessions/register" do
     @user = User.find(session[:id])
     redirect "/users/#{@user.id}"
   else
-    erb :"/sessions/register"
+    erb :"/users/new"
   end
 end
 
@@ -29,7 +29,7 @@ post '/sessions' do
     redirect "/users/#{@user.id}"
   else
     @errors = "Username and/or Password INCORRECT"
-    erb :"/sessions/login"
+    erb :"index"
   end
 end
 

@@ -3,9 +3,28 @@
 needs a register button that sends you to the users/new page -->
 
 
-<a href="users/new">users/new</a>
-<a href="users/show">users/show</a>
-<a href="surveys/new">surveys/new</a>
-<a href="surveys/show">surveys/show</a>
-<a href="surveys/results">surveys/results</a>
+<a href="users/new">Register</a>
 
+
+<h3>Log In To Your User Account</h3>
+
+<% if @errors %>
+  <p class="red-alert"><%= @errors %></p>
+<% end %>
+
+<form id="log_in_as_user" action="/sessions" method="POST">
+  <label for="the_email">Email:<br>
+    <input type="email" name="email" placeholder="Email">
+  </label><br>
+  <br>
+  <label for="the_password">Password:<br>
+    <input type="password" name="password" placeholder="Password">
+  </label><br>
+  <br>
+  <input type="submit" value="Log In!!">
+</form>
+
+<a href="users/:id">users/show</a>
+<a href="surveys/new">surveys/new</a>
+<a href="surveys/:id">surveys/show</a>
+<a href="surveys/results">surveys/results</a>

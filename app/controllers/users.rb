@@ -2,6 +2,10 @@ get '/users' do
   erb :'index'
 end
 
+get '/users/new' do
+  erb :'users/new'
+end
+
 post '/users' do
   @user=User.new(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
   if @user.save
@@ -15,17 +19,28 @@ end
 
 get '/users/:id' do
   if logged_in?
-    @user=User.find(session[:id])
-    current_user==@user
+    @current_user=User.find(session[:id])
+    @user =User.find(params[:id])
   erb :'users/show'
   else
     @errors = "Please login to your account"
-    erb :"sessions/login"
+    redirect '/'
   end
 end
 
-get '/users/new' do
-  erb :'users/new'
+get 'users/all' do
+  @user=User.find(session[:id])
+  @users=User.all
+  erb :"users/all_users"
+
+delete 'users/:id' do
+  @user_account=User.find(params[:id])
+  @session=session[:id]
+  if current_user=@user_account
+    @user.destroy
+    @session= nil
+    redirect '/'
+  end
 end
 
 

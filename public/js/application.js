@@ -16,7 +16,7 @@ $(add_question_button).click(function(e){
 	e.preventDefault();
 	if(x < max_fields){
 		x++;
-		$(questions_wrapper).append('<div class="question'+ x +'"><label for="question">Question:</label><input type="text" name="questions[]"/><a href="#" class="remove_question_field">Remove Question</a><div class="answers_wrap"><div><label for="answer">Choice:</label><input type="text" name="answer[question'+x+'][]"/></div><div><label for="answer">Choice:</label><input type="text" name="answer[question'+x+'][]"/></div><div><label for="answer">Choice:</label><input type="text" name="answer[question'+x+'][]"/></div><div><button class="add_answer_button">Add More Choices</button></div></div>');
+		$(questions_wrapper).append('<div class="question'+ x +'"><label for="question">Question:</label><input type="text" name="questions[]" placeholder="Enter your question"/><a href="#" class="remove_question_field button alt small">Remove Question</a><div class="answers_wrap"><div><label for="answer">Choice:</label><input type="text" name="answer[question'+x+'][]" placeholder="Enter an answer"/></div><div><label for="answer">Choice:</label><input type="text" name="answer[question'+x+'][]" placeholder="Enter an answer"/></div><div><label for="answer">Choice:</label><input type="text" name="answer[question'+x+'][]" placeholder="Enter an answer"/></div><div><button class="add_answer_button button small">Add More Choices</button></div></div>');
 		add_answer_button = $(".add_answer_button");
 		console.log(add_answer_button);
 	}
@@ -32,7 +32,7 @@ $(add_answer_button).on("click",function(e){
 		var answers_wrapper = $(this).parent().parent().find(".answers_wrap")
 		console.log(answers_wrapper)
 		var question_number = $(this).parent().parent().attr('class')
-		$(answers_wrapper).append('<div class="additional_answers"><label for="answer">Choice:</label><input type="text" name="answer['+ question_number+'][]"/><a href="#" class="remove_answer_field">Remove Choice</a></div>');
+		$(answers_wrapper).append('<div class="additional_answers"><label for="answer">Choice:</label><input type="text" name="answer['+ question_number+'][]" placeholder="Enter an answer"/><a href="#" class="remove_answer_field button alt small">Remove Choice</a></div>');
 	}
 });
 

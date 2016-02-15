@@ -12,30 +12,30 @@ This should redirect back to the profile page after a pop up says that it has be
 	<form method="POST" action="/surveys">
 		<div>
 			<label for="title">Survey Title:</label>
-			<input type="text" name="title">
+			<input type="text" name="title" placeholder="Survey Title">
 		</div>
 		<div class=question_fields_wrap>
 			<div class="question1">
 				<label for="question">Question:</label>
-				<input type="text" name="questions[]">
+				<input type="text" name="questions[]" placeholder="Enter your question">
 				<div class="answers_wrap">
 					<div>
 						<label for="answer">Choice:</label>
-						<input type="text" name="answer[question1][]">
+						<input type="text" name="answer[question1][]" placeholder="Enter an answer">
 						<label for="answer">Choice:</label>
-						<input type="text" name="answer[question1][]">
+						<input type="text" name="answer[question1][]" placeholder="Enter an answer">
 						<label for="answer">Choice:</label>
-						<input type="text" name="answer[question1][]">
+						<input type="text" name="answer[question1][]" placeholder="Enter an answer">
 					</div>
 				</div>
 				<div>
-					<button class="add_answer_button">Add More Choices</button>
+					<button class="add_answer_button button small">Add More Choices</button>
 				</div>
 			</div>
 		</div>
 
 		<div>
-			<button class="add_question_button">Add More Questions</button>
+			<button class="add_question_button button special small">Add More Questions</button>
 		</div>
 		<input type="submit" value="Save survey">
 	</form>
